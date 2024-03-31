@@ -4,11 +4,50 @@
   
   
   <entry>
+    <title></title>
+    <link href="/2024/03/31/leetcode/"/>
+    <url>/2024/03/31/leetcode/</url>
+    
+    <content type="html"><![CDATA[<h1 id="leetcode热题-1.-两数之和">Leetcode热题 1. 两数之和</h1><p>给定一个整数数组 <code>nums</code> 和一个整数目标值<code>target</code>，请你在该数组中找出 <strong>和为目标值</strong><em><code>target</code></em> 的那 <strong>两个</strong>整数，并返回它们的数组下标。你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。你可以按任意顺序返回答案。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">twoSum</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> target)</span> </span>&#123;<br>        unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; hashtable;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); i++)&#123;<br>            <span class="hljs-keyword">auto</span> it = hashtable.<span class="hljs-built_in">find</span>(target - nums[i]);<br>            <span class="hljs-keyword">if</span>( it != hashtable.<span class="hljs-built_in">end</span>())&#123;<br>                <span class="hljs-keyword">return</span> &#123;it-&gt;second, i&#125;;<br>            &#125;<br>            hashtable[nums[i]] = i; <br>        &#125;<br>        <span class="hljs-keyword">return</span> &#123;&#125;;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure><h2 id="学习笔记vector的用法">学习笔记：vector的用法</h2><p>笔记原链接：[<ahref="https://zhuanlan.zhihu.com/p/648650828">详解-vector] C++必知必会vector常用各种操作解析 - 知乎 (zhihu.com)</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/2024/03/31/%E5%A0%86%E6%8E%92%E5%BA%8F/"/>
+    <url>/2024/03/31/%E5%A0%86%E6%8E%92%E5%BA%8F/</url>
+    
+    <content type="html"><![CDATA[<h1 id="堆排序">堆排序</h1><p>堆排序的算法复杂度为: <span class="math inline">\(O (n\spacelgn)\)</span>,但是其具有<strong>空间原址性：</strong>（只需要常数个额外空间来存储临时数据）</p><ul><li><strong>最大堆（最小堆）</strong>的性质：父结点大于（小于）子结点</li><li>在堆排序当中，通常使用最大堆，最小堆用于最小优先队列。</li></ul><p>调整一个堆排序的时间复杂度: <spanclass="math inline">\(O(lgn)\)</span></p><p>建立一个堆： <span class="math inline">\(O(n\spacelgn)\)</span>，但是不是一个准确的上界；准确的上界为：<spanclass="math inline">\(O(n)\)</span></p><p>堆排序的算法进行：复杂度为<span class="math inline">\(O(n\spacelgn)\)</span></p><ol type="1"><li><p>每次都将最后一个元素与第一个元素进行交换</p></li><li><p>进行堆调整</p></li></ol>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/2024/03/30/Label%20constrain%20shortest%20distance/"/>
+    <url>/2024/03/30/Label%20constrain%20shortest%20distance/</url>
+    
+    <content type="html"><![CDATA[<h1 id="label-constrain-shortest-distance-论文阅读笔记">Label constrainshortest distance 论文阅读笔记</h1><h2 id="naive-approach">Naive approach</h2><h3 id="index-structure">Index structure:</h3><ul><li><p>Index's entry: 不同的label set</p></li><li><p>e.g.</p><figure><imgsrc="C:\Users\11970\AppData\Roaming\Typora\typora-user-images\image-20240330213237960.png"alt="image-20240330213237960" /><figcaption aria-hidden="true">image-20240330213237960</figcaption></figure></li></ul><p>每个结点<span class="math inline">\(X(v)\)</span> 都记录着顶点<spanclass="math inline">\(v\)</span>到达其余顶点在当前labelset构成的子图上，到其余顶点<spanclass="math inline">\(u\)</span>的距离。</p><h3 id="query-process">Query process</h3><ul><li>给定顶点<span class="math inline">\(s,t\)</span>，首先计算出它们在树分解得到的树上的最小公共祖先<spanclass="math inline">\(X_{lca}\)</span>.之后，再进行迭代，分别计算出<spanclass="math inline">\(s\)</span>和<spanclass="math inline">\(t\)</span>到<spanclass="math inline">\(X_{lca}\)</span>当中的结点的最小距离（因为它们构成了一个V_cut）。之后向上更新，沿途每一层，都更新该层结点到<spanclass="math inline">\(s\)</span>的最短路径<spanclass="math inline">\(d_s(u) =min\{d_s(u),d_s(v)+dis(v,u)\}\)</span></li><li>也就是说<spanclass="math inline">\(s\)</span>对于祖先结点当中的任意一顶点，想要到达，路径上的顶点都已经存在于它们两个之间。</li><li>对于<span class="math inline">\(t\)</span>也是一样的计算方式</li><li>如何理解LEMMA 4.1？相当于是把c的周围邻居都砍掉了。这两个不相交的部分，相当于是一个2-HOP，所以中间相交的部分就是必经之路。</li></ul><figure><imgsrc="C:\Users\11970\Documents\WeChat%20Files\wxid_fpiwmfmlp6l922\FileStorage\Temp\1be5fc7b1dee3d488ccf4f1a295362c.jpg"alt="1be5fc7b1dee3d488ccf4f1a295362c" /><figcaptionaria-hidden="true">1be5fc7b1dee3d488ccf4f1a295362c</figcaption></figure><ul><li>question： 如何确保<span class="math inline">\(s\)</span>到<spanclass="math inline">\(X_{lca}\)</span>最短路径计算的准确性？貌似与treedecomposition的形成有关</li></ul><h3 id="construct-index">Construct index</h3><ul><li>tree decomposition (MDE), 然后每次计算出来一个node<spanclass="math inline">\(X(v)\)</span>都用Dijkstra算法，计算出来<spanclass="math inline">\(v\)</span>到别的顶点的距离。（在新构建出来的子图上）</li></ul>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>My_first_blog</title>
     <link href="/2024/03/26/my_first_blog/"/>
     <url>/2024/03/26/my_first_blog/</url>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your veryfirst post. Check <a href="https://hexo.io/docs/">documentation</a> formore info. If you get any problems when using Hexo, you can find theanswer in <ahref="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> oryou can ask me on <ahref="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="quick-start">Quick Start</h2><h3 id="create-a-new-post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <ahref="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="run-server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="generate-static-files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <ahref="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="deploy-to-remote-sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <ahref="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
     
     
     

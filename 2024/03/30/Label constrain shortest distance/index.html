@@ -16,21 +16,21 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+    <meta name="description" content="Label constrain shortest distance 论文阅读笔记 Naive approach Index structure:  Index&#39;s entry: 不同的label set e.g.   image-20240330213237960   每个结点\(X(v)\) 都记录着顶点\(v\)到达其余顶点在当前label set构成的子图上，到其余">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My_first_blog">
-<meta property="og:url" content="http://example.com/2024/03/26/my_first_blog/index.html">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2024/03/30/Label%20constrain%20shortest%20distance/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="Label constrain shortest distance 论文阅读笔记 Naive approach Index structure:  Index&#39;s entry: 不同的label set e.g.   image-20240330213237960   每个结点\(X(v)\) 都记录着顶点\(v\)到达其余顶点在当前label set构成的子图上，到其余">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-03-26T10:39:03.471Z">
-<meta property="article:modified_time" content="2024-03-26T10:46:41.479Z">
+<meta property="article:published_time" content="2024-03-30T13:13:55.926Z">
+<meta property="article:modified_time" content="2024-03-31T06:14:47.968Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>My_first_blog - Hexo</title>
+  <title>Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="My_first_blog"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-03-26 18:39" pubdate>
-          March 26, 2024 pm
+        <time datetime="2024-03-30 21:13" pubdate>
+          March 30, 2024 pm
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18 words
+          335 words
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          1 mins
+          3 mins
         
       </span>
     
@@ -267,34 +267,65 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">My_first_blog</h1>
+            <h1 id="seo-header"></h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very
-first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for
-more info. If you get any problems when using Hexo, you can find the
-answer in <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or
-you can ask me on <a
-target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="quick-start">Quick Start</h2>
-<h3 id="create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-<p>More info: <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-<p>More info: <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-<p>More info: <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <h1 id="label-constrain-shortest-distance-论文阅读笔记">Label constrain
+shortest distance 论文阅读笔记</h1>
+<h2 id="naive-approach">Naive approach</h2>
+<h3 id="index-structure">Index structure:</h3>
+<ul>
+<li><p>Index's entry: 不同的label set</p></li>
+<li><p>e.g.</p>
+<figure>
+<img
+src="C:\Users\11970\AppData\Roaming\Typora\typora-user-images\image-20240330213237960.png" srcset="/img/loading.gif" lazyload
+alt="image-20240330213237960" />
+<figcaption aria-hidden="true">image-20240330213237960</figcaption>
+</figure></li>
+</ul>
+<p>每个结点<span class="math inline">\(X(v)\)</span> 都记录着顶点<span
+class="math inline">\(v\)</span>到达其余顶点在当前label
+set构成的子图上，到其余顶点<span
+class="math inline">\(u\)</span>的距离。</p>
+<h3 id="query-process">Query process</h3>
+<ul>
+<li>给定顶点<span class="math inline">\(s,t\)</span>
+，首先计算出它们在树分解得到的树上的最小公共祖先<span
+class="math inline">\(X_{lca}\)</span>.
+之后，再进行迭代，分别计算出<span
+class="math inline">\(s\)</span>和<span
+class="math inline">\(t\)</span>到<span
+class="math inline">\(X_{lca}\)</span>当中的结点的最小距离（因为它们构成了一个V_cut）。之后向上更新，沿途每一层，都更新该层结点到<span
+class="math inline">\(s\)</span>的最短路径<span
+class="math inline">\(d_s(u) =
+min\{d_s(u),d_s(v)+dis(v,u)\}\)</span></li>
+<li>也就是说<span
+class="math inline">\(s\)</span>对于祖先结点当中的任意一顶点，想要到达，路径上的顶点都已经存在于它们两个之间。</li>
+<li>对于<span class="math inline">\(t\)</span>也是一样的计算方式</li>
+<li>如何理解LEMMA 4.1？
+相当于是把c的周围邻居都砍掉了。这两个不相交的部分，相当于是一个2-HOP，所以中间相交的部分就是必经之路。</li>
+</ul>
+<figure>
+<img
+src="C:\Users\11970\Documents\WeChat%20Files\wxid_fpiwmfmlp6l922\FileStorage\Temp\1be5fc7b1dee3d488ccf4f1a295362c.jpg" srcset="/img/loading.gif" lazyload
+alt="1be5fc7b1dee3d488ccf4f1a295362c" />
+<figcaption
+aria-hidden="true">1be5fc7b1dee3d488ccf4f1a295362c</figcaption>
+</figure>
+<ul>
+<li>question： 如何确保<span class="math inline">\(s\)</span>到<span
+class="math inline">\(X_{lca}\)</span>最短路径计算的准确性？貌似与tree
+decomposition的形成有关</li>
+</ul>
+<h3 id="construct-index">Construct index</h3>
+<ul>
+<li>tree decomposition (MDE), 然后每次计算出来一个node<span
+class="math inline">\(X(v)\)</span>都用Dijkstra算法，计算出来<span
+class="math inline">\(v\)</span>到别的顶点的距离。（在新构建出来的子图上）</li>
+</ul>
 
                 
               </div>
@@ -312,8 +343,8 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>My_first_blog</div>
-      <div>http://example.com/2024/03/26/my_first_blog/</div>
+      <div></div>
+      <div>http://example.com/2024/03/30/Label constrain shortest distance/</div>
     </div>
     <div class="license-meta">
       
@@ -325,7 +356,7 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>March 26, 2024</div>
+          <div>March 30, 2024</div>
         </div>
       
       
@@ -357,7 +388,7 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/03/30/Label%20constrain%20shortest%20distance/" title="">
+                      <a href="/2024/03/31/%E5%A0%86%E6%8E%92%E5%BA%8F/" title="">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile"></span>
                         <span class="visible-mobile">Previous</span>
@@ -367,8 +398,8 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/03/26/hello-world/" title="LoZx">
-                        <span class="hidden-mobile">LoZx</span>
+                      <a href="/2024/03/26/my_first_blog/" title="My_first_blog">
+                        <span class="hidden-mobile">My_first_blog</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

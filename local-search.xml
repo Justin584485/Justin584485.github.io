@@ -5,6 +5,45 @@
   
   <entry>
     <title></title>
+    <link href="/2024/06/15/%E5%8D%8E%E4%B8%BA%E9%9D%A2%E8%AF%95%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
+    <url>/2024/06/15/%E5%8D%8E%E4%B8%BA%E9%9D%A2%E8%AF%95%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<h1 id="day1">Day1</h1><h2 id="跳跃游戏ⅱ">#45 跳跃游戏Ⅱ</h2><figure><imgsrc="C:\Users\11970\AppData\Roaming\Typora\typora-user-images\image-20240615121505882.png"alt="image-20240615121505882" /><figcaption aria-hidden="true">image-20240615121505882</figcaption></figure><p>题解：维护一个<code>max_pos</code>,再维护一个<code>end</code>，当<code>i</code>位于<code>end</code>之间的时候，就更新<code>maxPos</code>,当走到<code>end</code>的时候，更新<code>maxPos</code>.</p><p>代码如下：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">jump</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-type">int</span> maxPos = <span class="hljs-number">0</span>, step = <span class="hljs-number">0</span>, end = <span class="hljs-number">0</span>, n = nums.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i =<span class="hljs-number">0</span>; i&lt; n<span class="hljs-number">-1</span>; i++)&#123;<br>            <br>                maxPos = <span class="hljs-built_in">max</span>(maxPos, i+nums[i]);<br>                <span class="hljs-keyword">if</span>( i == end)&#123;<br>                    end = maxPos;<br>                    step++;<br>                &#125;<br>            <br>        &#125;<br>        <span class="hljs-keyword">return</span> step;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure><h2 id="无重复字符的最长子串">#3 无重复字符的最长子串</h2><figure><imgsrc="C:\Users\11970\AppData\Roaming\Typora\typora-user-images\image-20240616020518046.png"alt="image-20240616020518046" /><figcaption aria-hidden="true">image-20240616020518046</figcaption></figure><p>思路：滑动窗口，注意<code>right</code>和<code>left</code>值的计算</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;<br>        unordered_set &lt;<span class="hljs-type">char</span>&gt; hash;<br>        <span class="hljs-type">int</span> maxLength = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> tempLength = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>, right = <span class="hljs-number">-1</span>;<br>        <br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i&lt; s.<span class="hljs-built_in">size</span>(); i++)&#123;<br>            <span class="hljs-keyword">if</span>(hash.<span class="hljs-built_in">find</span>(s[i]) == hash.<span class="hljs-built_in">end</span>())&#123;<br>                hash.<span class="hljs-built_in">insert</span>(s[i]);<br>                right = i;<br>                tempLength = right - left + <span class="hljs-number">1</span>;<br>                maxLength = <span class="hljs-built_in">max</span>(maxLength, tempLength);<br>            &#125;<br>            <span class="hljs-keyword">else</span>&#123;<br>                right = i;<br>                <span class="hljs-keyword">while</span>(left &lt; right&amp;&amp;hash.<span class="hljs-built_in">find</span>(s[right]) != hash.<span class="hljs-built_in">end</span>())&#123;<br>                    hash.<span class="hljs-built_in">erase</span>(s[left]);<br>                    left++;<br>                &#125;<br>                hash.<span class="hljs-built_in">insert</span>(s[i]);<br>            &#125;<br><br>        &#125;<br>        <span class="hljs-keyword">return</span> maxLength;<br><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/2024/06/15/C++%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0%20d1/"/>
+    <url>/2024/06/15/C++%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0%20d1/</url>
+    
+    <content type="html"><![CDATA[<h1 id="c学习日记-d1">C++学习日记 d1</h1><h2 id="main">Main()</h2><ol type="1"><li><strong>返回值：</strong>main函数被启动代码调用，启动代码是由编译器加到程序当中的，作为程序和操作系统的接口。main自动返回一个整数值，再ANSI/ISOC++里面默认返回0</li><li>main()是不可缺少的，但是存在特殊情况：在windows编程当中，可以编写一个动态链接库（DLL）模块，用于别的程序，不是独立的程序，可以没有main</li></ol><h2 id="cout">cout</h2><ul><li><p>使用cout输出整数的时候，会先将这个整数转化为字符串</p></li><li><p>与printf相比的优势：</p><ol type="1"><li><p><code>printf()</code>需要显示说明输出变量的类型：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;this is a num: %s/n&quot;</span>, num);<br></code></pre></td></tr></table></figure></li><li><p>如果指定的类型和变量本身的类型相左，会出现乱码</p></li></ol></li></ul><h2 id="类的简介">类的简介</h2><ul><li>cout就是一个<code>ostream</code>类的对象</li></ul><h2 id="函数的简介">函数的简介</h2><ul><li>函数是不可以嵌套定义的</li></ul><h2 id="整型">整型</h2><p>分别为<code>char</code>,<code>short</code>,<code>int</code>,<code>long</code>,<code>long long</code>(为c++11新增)</p><ul><li><p>short最少16位</p></li><li><p>int至少和short一样长</p></li><li><p>long至少32位，且至少和int一样长</p></li><li><p>long long至少是64位，且至少和long一样长</p></li><li><p>计算机内存的基本单位是bit(位)</p></li><li></li></ul>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/2024/06/15/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA%E5%AD%A6%E4%B9%A0d1/"/>
+    <url>/2024/06/15/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA%E5%AD%A6%E4%B9%A0d1/</url>
+    
+    <content type="html"><![CDATA[<h1 id="day-1-最大堆和快排">day 1 最大堆和快排</h1><h2 id="最大堆">最大堆</h2><ul><li>MAX-HEAPIFY: 时间复杂度为<spanclass="math inline">\(O(lgn)\)</span>,具体实现就是从上往下维护堆的性质，把不符合最大堆的结点往下调整。</li><li>BUILD-MAX-HEAP: 时间复杂度为<spanclass="math inline">\(O(n)\)</span>：在高度为h（其中h为该点到叶结点之间的距离）的结点有<spanclass="math inline">\(n/2^{(h+1)}\)</span>个结点，所以复杂度就是对它们求和，最后得到<spanclass="math inline">\(O(n)\)</span></li><li>HEAPSORT(堆排序)： 最后的复杂度就是<spanclass="math inline">\(O(nlgn)\)</span>​，因为每次将堆头的结点与堆尾的结点进行互换，做MAX-HEAPIFY，执行n次。</li><li>最好，最坏，平均都是<spanclass="math inline">\(O(nlgn)\)</span>，<strong>不稳定</strong></li></ul><h2 id="快速排序">快速排序</h2><p>时间复杂度</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
     <link href="/2024/03/30/Label%20constrain%20shortest%20distance/"/>
     <url>/2024/03/30/Label%20constrain%20shortest%20distance/</url>
     
